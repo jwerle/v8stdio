@@ -1,0 +1,7 @@
+
+deps/v8
+build/
+tmp/
+out/
+v8util.o
+include/v8stdio.h.gch
