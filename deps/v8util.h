@@ -29,7 +29,7 @@ strtocstr (const v8::String::Utf8Value &str);
  */
 
 void
-print (const v8::String::Utf8Value &str);
+Print (const v8::String::Utf8Value &str);
 
 
 /**
@@ -42,7 +42,7 @@ print (const v8::String::Utf8Value &str);
  */
 
 v8::Handle<v8::String>
-readjs (const char *file);
+ReadJs (const char *file);
 
 
 /**
@@ -58,7 +58,7 @@ readjs (const char *file);
  */
 
 v8::Handle<v8::Value>
-evaljs (const char *name, const char *source, bool report_exception = true, bool print_result = false);
+EvalJs (const char *name, const char *source, bool report_exception = true, bool print_result = false);
 
 
 /**
@@ -71,7 +71,22 @@ evaljs (const char *name, const char *source, bool report_exception = true, bool
  */
 
 void
-exception (v8::TryCatch *trycatch);
+Exception (v8::TryCatch *trycatch);
+
+
+/**
+ * Reads, and evaluates JavaScript from a provided file source
+ *
+ * @api public
+ * @namespace `v8util`
+ * @param {const char} *file
+ * @param {bool} report_exception (default: `true`)
+ * @param {bool} print_result (default: `false`)
+ * @return {v8::Handle<v8::Value>}
+ */
+
+v8::Handle<v8::Value>
+Compile (const char *file, bool report_exception = true, bool print_result = false);
 
 
 /**

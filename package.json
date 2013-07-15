@@ -1,0 +1,23 @@
+{
+  "name": "v8stdio",
+  "version": "0.1.1",
+  "description": "stdio for v8 development",
+  "src": ["include/v8stdio.h", "src/v8stdio.cc"],
+  "install": "make install",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "v8",
+    "stdio"
+  ],
+  "repo": "jwerle/v8stdio",
+  "repository" : {
+  	"git": "git@github.com:jwerle/v8stdio.git"
+  },
+  "author": "Joseph Werle <joseph.werle@gmail.com>",
+  "license": "MIT"
+}

@@ -1,20 +1,24 @@
 
-
-V8 = deps/v8/out/native/libv8.dylib
-SRC = $(wildcard deps/*.cc)
-SRC += src/v8stdio.cc
-FLAGS = -Iinclude -Ideps -Ideps/v8/include
+SRC := include/v8stdio.h src/v8stdio.cc
+OBJ := libv8stdio.so
+TEST := v8test
+PREFIX := /usr/local
+FLAGS := -Iinclude -I$(PREFIX)/include/v8 
+LINKS := -lv8 -lv8util
+OUTDIR := out
 
 test:
-	g++ $(V8) $(SRC) $(FLAGS) test.cc -o v8-stdio-test
-	@v8-stdio-test
-	@rm -rf v8-stdio-test
-	@echo
+	@g++ $(SRC) $(FLAGS) $(LINKS) test.cc -o $(TEST)
+	@$(TEST)
+	@rm -rf $(TEST)
 
 build:
-	@if test -d; then rm -rf out/ && mkdir out/; else mkdir out/; fi;
-	g++ $(FLAGS) -fpic -c $(SRC)
-	g++ $(V8) $(SRC) $(FLAGS) -shared -o out/libv8stdio.so
+	@if test -d; then rm -rf $(OUTDIR)/ && mkdir $(OUTDIR)/; else mkdir $(OUTDIR)/; fi;
+	g++ -fpic -c $(SRC) $(FLAGS)
+	@g++ $(SRC) $(FLAGS) $(LINKS) -shared -o $(OUTDIR)/$(OBJ)
 
+install: test build
+	@cp ./include/*.h $(PREFIX)/include
+	@cp ./$(OUTDIR)/$(OBJ) $(PREFIX)/lib
 
 .PHONY: test build
