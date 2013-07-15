@@ -12,22 +12,11 @@
 v8::Handle<v8::Object>
 v8stdio::Init () {
 	v8::HandleScope scope(v8::Isolate::GetCurrent());
-	v8::Local<v8::Object> native_stdio = v8::Object::New();
+	v8::Local<v8::Object> stdio = v8::Object::New();
 	v8::Local<v8::Object> stdout_ = v8stdio::StdOut::Init(v8::Object::New());
 	v8::Local<v8::Object> stderr_ = v8stdio::StdErr::Init(v8::Object::New());
-
-
-	native_stdio->Set(v8::String::New("stdout"), stdout_);
-	native_stdio->Set(v8::String::New("stderr"), stderr_);
-
-	// set `__native_stdio` to global context
-	v8::Context::GetCurrent()->Global()->Set(
-		v8::String::New("__native_stdio"), native_stdio
-	);
-
-
-	v8::Handle<v8::Value> stdio = v8util::Compile("./src/stdio.js", true, true);
-
+	stdio->Set(v8::String::New("stdout"), stdout_);
+	stdio->Set(v8::String::New("stderr"), stderr_);
 	return stdio->ToObject();
 }
 

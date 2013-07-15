@@ -82,7 +82,6 @@ v8stdio::AttachTo(v8stdio::Init(), target);
 stdio.stdout.write("hello world\n");
 ```
 
-
 ***stderr in javascript***
 
 ```js
