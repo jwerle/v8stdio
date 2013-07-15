@@ -76,6 +76,19 @@ v8::Handle<v8::Object> target = v8::Object::New();
 v8stdio::AttachTo(v8stdio::Init(), target);
 ```
 
+***stdout in javascript***
+
+```js
+stdio.stdout.write("hello world\n");
+```
+
+
+***stderr in javascript***
+
+```js
+stdio.stderr.write("Error!\n");
+```
+
 ## api
 
 ### v8::Handle\<v8::Object> v8stdio::Init ()
