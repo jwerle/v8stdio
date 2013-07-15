@@ -1,6 +1,6 @@
 {
   "name": "v8stdio",
-  "version": "0.1.1",
+  "version": "0.0.1",
   "description": "stdio for v8 development",
   "src": ["include/v8stdio.h", "src/v8stdio.cc"],
   "install": "make install",
